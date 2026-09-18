@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos ご提案 | 継続的なコーディングパートナーシップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A3D;
+    --steel:#5B7FA6;
+    --orange:#E8622C;
+    --concrete:#F4F1EA;
+    --gray:#8A8F94;
+    --ink:#26313E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--concrete);
+    color:var(--ink);
+    font-family:'Noto Sans JP',sans-serif;
+    line-height:1.85;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    color:var(--navy);
+    letter-spacing:.02em;
+  }
+  .accent-num{
+    font-family:'Space Grotesk',sans-serif;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* トラス構造の装飾バー（橋本＝橋のモチーフ） */
+  .truss-bar{
+    height:34px;
+    width:100%;
+    background:
+      repeating-linear-gradient(60deg, transparent 0 12px, var(--steel) 12px 14px, transparent 14px 26px),
+      repeating-linear-gradient(-60deg, transparent 0 12px, var(--steel) 12px 14px, transparent 14px 26px);
+    background-position: bottom;
+    background-repeat: repeat-x;
+    position:relative;
+  }
+  .truss-bar::before,.truss-bar::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;
+    height:3px;
+    background:var(--steel);
+  }
+  .truss-bar::before{ bottom:0; }
+  .truss-bar::after{ top:14px; opacity:.5; }
+
+  /* ===== HEADER ===== */
+  header{
+    background:var(--navy);
+    color:#fff;
+    padding:18px 0;
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:.08em;
+  }
+  .logo span{color:var(--orange);}
+  .logo-sub{
+    font-size:11px;
+    color:var(--gray);
+    letter-spacing:.15em;
+    margin-top:2px;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:linear-gradient(180deg,var(--navy) 0%, #223a54 100%);
+    color:#fff;
+    padding:90px 0 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-120px;right:-120px;
+    width:420px;height:420px;
+    border:2px solid rgba(232,98,44,.25);
+    border-radius:50%;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    bottom:-160px;left:-100px;
+    width:320px;height:320px;
+    border:2px solid rgba(91,127,166,.3);
+    border-radius:50%;
+  }
+  .hero .tag{
+    display:inline-block;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;
+    letter-spacing:.2em;
+    color:var(--orange);
+    border:1px solid var(--orange);
+    padding:5px 14px;
+    border-radius:2px;
+    margin-bottom:26px;
+  }
+  .hero h1{
+    color:#fff;
+    font-size:clamp(30px,5vw,52px);
+    font-weight:900;
+    line-height:1.5;
+    margin-bottom:24px;
+    position:relative;
+    z-index:2;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--orange);
+  }
+  .hero p.lead{
+    max-width:640px;
+    font-size:16px;
+    color:#D9DEE5;
+    position:relative;
+    z-index:2;
+  }
+  .hero .from{
+    margin-top:36px;
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:.05em;
+  }
+
+  /* ===== SECTION COMMON ===== */
+  section{padding:80px 0;}
+  .section-head{
+    text-align:center;
+    margin-bottom:52px;
+  }
+  .section-head .en{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--steel);
+    letter-spacing:.25em;
+    font-size:13px;
+    display:block;
+    margin-bottom:10px;
+  }
+  .section-head h2{
+    font-size:clamp(22px,3.2vw,32px);
+    font-weight:900;
+  }
+
+  /* ===== UNDERSTANDING ===== */
+  .understand{
+    background:#fff;
+  }
+  .understand-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .understand-visual{
+    background:var(--navy);
+    border-radius:6px;
+    padding:34px;
+    color:#fff;
+    position:relative;
+  }
+  .understand-visual::before{
+    content:"";
+    position:absolute;
+    inset:10px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:4px;
+  }
+  .understand-visual .quote-mark{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:60px;
+    color:var(--orange);
+    line-height:1;
+  }
+  .understand-visual p{
+    font-size:15px;
+    color:#D9DEE5;
+    margin-top:14px;
+  }
+  .understand-text h3{
+    font-size:20px;
+    margin-bottom:16px;
+  }
+  .understand-text p{
+    color:var(--ink);
+    font-size:15px;
+    margin-bottom:14px;
+  }
+  .understand-text ul{
+    margin-top:18px;
+    list-style:none;
+  }
+  .understand-text li{
+    padding-left:20px;
+    position:relative;
+    font-size:14px;
+    color:var(--gray);
+    margin-bottom:8px;
+  }
+  .understand-text li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--orange);
+  }
+
+  /* ===== VALUES ===== */
+  .values{background:var(--concrete);}
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .value-card{
+    background:#fff;
+    border-radius:6px;
+    padding:32px 26px;
+    border-top:4px solid var(--steel);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    position:relative;
+  }
+  .value-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 30px rgba(27,42,61,.12);
+    border-top-color:var(--orange);
+  }
+  .value-card .num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:34px;
+    color:var(--steel);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .value-card h3{
+    font-size:17px;
+    margin-bottom:10px;
+  }
+  .value-card p{
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:1.8;
+  }
+  .value-card:nth-child(4),.value-card:nth-child(5){
+    grid-column:span 1;
+  }
+
+  /* ===== PROCESS ===== */
+  .process{background:#fff;}
+  .timeline{
+    position:relative;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:28px;
+    top:10px;
+    bottom:10px;
+    width:2px;
+    background:repeating-linear-gradient(to bottom, var(--steel) 0 8px, transparent 8px 14px);
+  }
+  .t-item{
+    display:flex;
+    gap:24px;
+    margin-bottom:44px;
+    position:relative;
+  }
+  .t-item:last-child{margin-bottom:0;}
+  .t-dot{
+    flex:0 0 58px;
+    height:58px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:20px;
+    z-index:2;
+    border:4px solid #fff;
+    box-shadow:0 0 0 2px var(--navy);
+  }
+  .t-body h3{
+    font-size:17px;
+    margin-bottom:6px;
+  }
+  .t-body p{
+    font-size:14px;
+    color:var(--gray);
+  }
+  .t-body .when{
+    display:inline-block;
+    margin-top:8px;
+    font-size:12px;
+    color:var(--orange);
+    letter-spacing:.05em;
+    font-family:'Space Grotesk',sans-serif;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing{
+    background:linear-gradient(135deg,var(--navy) 0%, #24405c 60%, var(--steel) 140%);
+    color:#fff;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .closing::before{
+    content:"";
+    position:absolute;
+    top:-80px;left:50%;
+    transform:translateX(-50%);
+    width:600px;height:600px;
+    background:radial-gradient(circle, rgba(232,98,44,.18), transparent 70%);
+  }
+  .closing .wrap{position:relative;z-index:2;}
+  .closing h2{
+    color:#fff;
+    font-size:clamp(24px,3.6vw,36px);
+    margin-bottom:18px;
+    font-weight:900;
+  }
+  .closing p{
+    color:#D9DEE5;
+    max-width:520px;
+    margin:0 auto 34px;
+    font-size:15px;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--orange);
+    color:#fff;
+    padding:16px 44px;
+    border-radius:2px;
+    font-weight:700;
+    letter-spacing:.08em;
+    font-size:15px;
+    box-shadow:0 10px 24px rgba(232,98,44,.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .cta-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(232,98,44,.45);
+  }
+  .closing .note{
+    margin-top:22px;
+    font-size:12px;
+    color:var(--gray);
+  }
+
+  footer{
+    background:var(--navy);
+    color:var(--gray);
+    text-align:center;
+    padding:26px 0;
+    font-size:12px;
+    letter-spacing:.05em;
+  }
+  footer span{color:var(--orange);}
+
+  @media (max-width:820px){
+    .understand-box{grid-template-columns:1fr;}
+    .value-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .value-grid{grid-template-columns:1fr;}
+    .hero{padding:70px 0 50px;}
+    section{padding:60px 0;}
+    .t-item{gap:16px;}
+    .t-dot{flex:0 0 46px;height:46px;font-size:16px;}
+    .timeline::before{left:22px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div>
+      <div class="logo">Kairos<span>.</span></div>
+      <div class="logo-sub">WEB PRODUCTION &amp; SYSTEM TEAM</div>
+    </div>
+    <div class="logo-sub" style="text-align:right;">FOR Rs_design01 様</div>
+  </div>
+</header>
+
+<div class="truss-bar"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">PROPOSAL FROM KAIROS</span>
+    <h1>橋本の街に、途切れない<br><em>コーディング体制</em>という橋を。</h1>
+    <p class="lead">
+      単発の依頼で終わらせない。複数案件・独自CMS・継続稼働という
+      御社の制作フローに、Kairosはチームとして寄り添います。
+      1人のコーダー探しではなく、"止まらない体制"のご提案です。
+    </p>
+    <div class="from">Kairos（Web制作・システム開発チーム）より、継続的コーディングパートナーとしての提案書</div>
+  </div>
+</section>
+
+<div class="truss-bar"></div>
+
+<section class="understand">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">UNDERSTANDING</span>
+      <h2>募集内容を拝見して、感じたこと</h2>
+    </div>
+    <div class="understand-box">
+      <div class="understand-visual">
+        <div class="quote-mark">“</div>
+        <p>
+          複数案件を並行して抱え、独自CMSでの制作を任せられる人材を、
+          長期で確保したい。マニュアルは用意した。あとは"報連相ができて、
+          止まらずに動いてくれる相手"がほしい——。
+        </p>
+      </div>
+      <div class="understand-text">
+        <h3>これは「1件の外注」ではなく「体制構築」のご依頼だと理解しています</h3>
+        <p>
+          相模原・橋本を拠点に、HP制作からLP、システム開発まで幅広く手がける
+          御社にとって、コーディングは日々発生する継続業務。だからこそ、
+          属人的な1名依存ではなく、途切れずに稼働できる仕組みが必要なはずです。
+        </p>
+        <ul>
+          <li>独自CMSのキャッチアップとマニュアル遵守ができること</li>
+          <li>週3日〜、コアタイムに連絡が取れる安定稼働</li>
+          <li>6ヶ月以上、腰を据えて任せられる関係性</li>
+          <li>基本的な報連相を徹底できる進行管理</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">WHAT KAIROS BRINGS</span>
+      <h2>Kairosがご提供できること</h2>
+    </div>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="num accent-num">01</div>
+        <h3>属人化しないチーム対応</h3>
+        <p>個人依存ではなくチーム体制で対応。急な繁忙期や複数案件の並行発注にも、稼働メンバーで柔軟に吸収します。</p>
+      </div>
+      <div class="value-card">
+        <div class="num accent-num">02</div>
+        <h3>独自CMS学習・マニュアル遵守</h3>
+        <p>ご用意いただくマニュアルに沿って正確にキャッチアップ。独自仕様のCMSにも短期間で適応します。</p>
+      </div>
+      <div class="value-card">
+        <div class="num accent-num">03</div>
+        <h3>週3日〜の安定稼働</h3>
+        <p>1日4〜8時間、コアタイムでの連絡対応を前提にスケジュールを組み、繁閑に合わせて柔軟に調整可能です。</p>
+      </div>
+      <div class="value-card">
+        <div class="num accent-num">04</div>
+        <h3>徹底した報連相フロー</h3>
+        <p>進捗・課題・確認事項をこまめに共有。着手前後の報告ルールを明確にし、御社の管理コストを抑えます。</p>
+      </div>
+      <div class="value-card">
+        <div class="num accent-num">05</div>
+        <h3>神奈川エリア対応</h3>
+        <p>オンライン中心の対応に加え、必要な際は橋本駅までの訪問にも対応。長期的な信頼関係を前提にご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">HOW WE START</span>
+      <h2>ご契約までの流れ</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-dot accent-num">1</div>
+        <div class="t-body">
+          <h3>ご応募・実績のご提示</h3>
+          <p>指定フォーマットに沿って、稼働可能時間・実績・ポートフォリオをご提示します。</p>
+          <span class="when">DAY 1</span>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot accent-num">2</div>
+        <div class="t-body">
+          <h3>オンライン面談</h3>
+          <p>稼働体制、コミュニケーション方法、マニュアルの内容についてすり合わせます。</p>
+          <span class="when">DAY 2-3</span>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot accent-num">3</div>
+        <div class="t-body">
+          <h3>トライアル案件の実施</h3>
+          <p>まずは小規模なコーディング案件から着手し、独自CMSの操作感と品質基準をすり合わせます。</p>
+          <span class="when">WEEK 1</span>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot accent-num">4</div>
+        <div class="t-body">
+          <h3>継続稼働へ移行</h3>
+          <p>週3日〜の定常稼働体制を確立し、複数案件を並行して継続的にお受けします。</p>
+          <span class="when">WEEK 2〜 / 6ヶ月〜継続</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>橋を架けるように、<br>止まらない制作体制を。</h2>
+    <p>
+      単発の外注ではなく、御社の制作フローに組み込まれる継続パートナーとして。
+      まずは自己紹介・実績のご共有から、Kairosとお話しさせてください。
+    </p>
+    <a href="#" class="cta-btn">応募フォーマットで問い合わせる</a>
+    <div class="note">① 橋本駅までの訪問可否　② 対応時間と週稼働時間　③ 実績・ポートフォリオ、をご案内いたします</div>
+  </div>
+</section>
+
+<footer>
+  Kairos <span>/</span> Web制作・システム開発チーム — Rs_design01 様への継続的コーディング提案
+</footer>
+
+</body>
+</html>
